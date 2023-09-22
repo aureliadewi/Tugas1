@@ -14,11 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts/index');
 });
 Route::get('/nama', function () {
     return view('aurel');
 });
 Route::get('/nim', function () {
     return('21.31.0008');
+});
+Route::get('/home', function () {
+    return view('main');
 });
