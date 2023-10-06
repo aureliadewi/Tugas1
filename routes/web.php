@@ -16,12 +16,30 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('layouts/index');
 });
-Route::get('/nama', function () {
-    return view('aurel');
-});
-Route::get('/nim', function () {
-    return('21.31.0008');
+Route::get('/about', function () {
+    return view('about',[
+        "title" => "about"
+    ]);
+// });
+// Route::get('/nim', function () {
+//     return('21.31.0008');
 });
 Route::get('/home', function () {
-    return view('main');
+    return view('home',[
+        "title" => "blog"
+    ]);
 });
+
+
+Route::get('/about2', function () {
+    return view('about2');
+});
+
+Route::get('/blog', function () {
+    return view('blog', [
+    "nama" => "Aurelia Dewi",
+    "email" => "Aurelia Dewi@gmail.com",
+    "gambar" => "me.jpg"
+]);
+});
+
