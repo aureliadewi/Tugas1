@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\artikelcontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,11 +36,15 @@ Route::get('/about2', function () {
     return view('about2');
 });
 
-Route::get('/blog', function () {
-    return view('blog', [
-    "nama" => "Aurelia Dewi",
-    "email" => "Aurelia Dewi@gmail.com",
-    "gambar" => "me.jpg"
-]);
-});
+// Route::get('/blog', function () {
+//     return view('blog', [
+//     "nama" => "Aurelia Dewi",
+//     "email" => "Aurelia Dewi@gmail.com",
+//     "gambar" => "me.jpg"
+// ]);
+// });
 
+
+
+Route::get('/blog', [artikelcontroller::class, 'index'])->name('artikel.index');
+Route::get('/detail/{id}', [artikelcontroller::class, 'detail'])->name('artikel.detail');
