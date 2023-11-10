@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\artikelcontroller;
+use App\Models\Blog;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +15,18 @@ use App\Http\Controllers\artikelcontroller;
 |
 */
 
-Route::get('/', function () {
-    return view('layouts/index');
+Route::get('/blog', function () {
+    return view('blog2', [
+        "title" => "Post",
+        "posts" => Blog::all()
+    ]);
+});
+
+Route::get('/blog{slug}', function ($slug){
+    return view('post', [
+        "title" => "single post",
+        "post" =>Blog::getBySlack($slug)
+    ]);
 });
 Route::get('/about', function () {
     return view('about',[
@@ -25,7 +36,7 @@ Route::get('/about', function () {
 // Route::get('/nim', function () {
 //     return('21.31.0008');
 });
-Route::get('/home', function () {
+Route::get('/', function () {
     return view('home',[
         "title" => "blog"
     ]);
@@ -46,5 +57,8 @@ Route::get('/about2', function () {
 
 
 
-Route::get('/blog', [artikelcontroller::class, 'index'])->name('artikel.index');
-Route::get('/detail/{id}', [artikelcontroller::class, 'detail'])->name('artikel.detail');
+//Route::get('/blog', [artikelcontroller::class, 'index'])->name('artikel.index');
+//Route::get('/detail/{id}', [artikelcontroller::class, 'detail'])->name('artikel.detail');
+
+//Route::get('/blog', function () {
+    
